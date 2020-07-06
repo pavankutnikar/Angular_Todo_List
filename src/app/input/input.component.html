@@ -1,0 +1,24 @@
+<div class="container">
+      <h1>Angular Todo List</h1>
+      <div class="box-style">
+        <div class="input-style">
+          <input type="text" [(ngModel)]="enteredName">
+          <div class="hover-style" (click)="updateList()">
+            <span class="material-icons icon-style"> add </span>
+          </div>
+        </div>
+        <select class="select-style" placeholder="Select" [(ngModel)]="myDropDown" (ngModelChange)="onChangeofOptions($event)">
+          <option value="" class="default-option" disabled selected>Select</option>
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="uncompleted">Uncompleted</option>
+        </select>
+      </div>
+      <div class="lists-body">
+        <div class="lists-style" *ngFor="let list of finalHtmlNameList; let i = index">
+          <li class="list-color" [ngClass]="{'completed': getCompletedList(list)}">{{list}}</li>
+          <span class="material-icons done-icon-style" (click)="editList($event)"> done </span>
+          <span class="material-icons delete-icon-style" (click)="deleteList($event)"> delete </span>
+        </div>
+      </div>
+</div>
